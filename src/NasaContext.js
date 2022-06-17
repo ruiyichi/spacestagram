@@ -5,7 +5,7 @@ const NasaContext = React.createContext();
 
 export const NasaProvider = ({ children }) => {
 	const APOD_URL = "https://api.nasa.gov/planetary/apod";
-	const API_KEY = "API_KEY_GOES_HERE";
+	const API_KEY = "YOUR_API_KEY_GOES_HERE";
 
 	const [postData, setPostData] = useState([]);
 
@@ -21,8 +21,7 @@ export const NasaProvider = ({ children }) => {
 					count: 2
 				}
 			});
-			setPostData(response.data);
-			console.log(response.data);
+			setPostData(prevPostData => prevPostData.concat(response.data));
 		}
 		catch (e) {
 			console.error(e);
